@@ -1,0 +1,79 @@
+
+<head>
+  <title>Social</title>
+  <!-- <script src="/social/lib/dropzone/dropzone.js"></script> -->
+</head>
+
+<body>
+
+ <h1>Welcome to Meteor!</h1>
+
+ <div> <h4>Please login or Signup to continue.</h4>
+    {{> loginButtons}} <br><br>
+    {{> add}} <br><br>
+    
+    Upload Profile Picture here!
+    {{> drop}}
+
+    <br> <br><br>      
+        {{#each details}}
+        {{> show}}
+    {{/each}}
+    <br>
+   </div>
+
+   <div>
+    <strong>This is image view:</strong>
+
+    {{#each images}}
+    {{> imageviewer}}
+    {{/each}}
+   </div>
+  </body>
+
+
+
+<template name = "add">
+
+  <form class="add-details">
+
+    <input type="text" name="text" placeholder="Enter your Name here">
+    <input type="text" name="userLocation" placeholder="Enter your location here">
+    <input type="text" name="userDate" placeholder="Enter your date of birth here"><br>
+    <button type="submit">Submit</button> <br>
+<!-- 
+    <ul>
+      <li>{{addDetails}}</li>
+    </ul> -->
+
+  </form> <br>
+
+  </template>
+<template name = "show">
+  <li>User name is : <strong>{{text}}</strong> and Location is: <strong>{{userLocation}}</strong>
+     and User's date of Birth is : <strong>{{userDate}}</strong></li>
+</template>
+
+<template name = "drop">
+
+  <form  class="dropz">
+      <input type="file" name="files">
+      <button type="submit">Submit</button> <br><br>
+    
+    </form>
+
+</template>
+
+<template name="imageviewer">
+  <div class="imageview">
+      <div> 
+       
+        <img src="{{url}}" alt="Not found">
+        <!-- <tr>
+          <td>{{uploadedAt}}</td><td>{{original.name}}</td><td><a href="{{url}}">link</a></td><td>{{#if isUploaded}}uploaded{{else}}uploading...{{/if}}</td><td><button id="deleteFileButton">delete</button></td>
+        </tr> -->
+       
+        <!-- <a href="{{this.url}}" target="_blank"><img src="{{this.url store='thumbs' uploading='/images/uploading.gif' storing='/images/storing.gif'}}" alt="" class="thumbnail" /></a> -->
+      </div>
+  </div>
+</template>
