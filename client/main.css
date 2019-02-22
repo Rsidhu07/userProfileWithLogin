@@ -3,7 +3,12 @@ body {
   font-family: sans-serif;
 }
 
-
+.delete {
+  float: right;
+  font-weight: bold;
+  background: none;
+  border: none;
+}
 
 
 @-webkit-keyframes passing-through {

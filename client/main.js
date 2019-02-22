@@ -103,10 +103,42 @@ Template.drop.events({
     var files = event.target.files.files;
     console.log(files);
 
+    // Meteor.call('image.insert', files);
+    
     for (var i = 0, ln = files.length; i < ln; i++) {
+      
       Images.insert(files[i], function (err, fileObj) {
         // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
       });
     }
+    
   }
+});
+
+Template.show.events({ 
+
+'click .delete' : function(event){
+
+
+
+  var promp = window.prompt("Are you sure you want to delete the selected record?, please type Yes/NO", "Yes", "No");
+
+    if(promp=="Yes"){
+
+      Meteor.call('details.delete', this);
+    
+    }
+
+    else if(promp=="No"){
+      alert("Delete operation cancelled");
+    }
+    
+    else{
+      alert("Try again with Yes or No only");
+    }
+
+}
+
+
+
 });
