@@ -3,31 +3,37 @@
   <title>Social</title>
   <!-- <script src="/social/lib/dropzone/dropzone.js"></script> -->
 </head>
-
 <body>
-
  <h1>Welcome to Meteor!</h1>
-
- <div> <h4>Please login or Signup to continue.</h4>
     {{> loginButtons}} <br><br>
-    {{> add}} <br><br>
-    
+        {{#if currentUser }} {{else}}<h4>Please login or Signup to continue.</h4>{{/if}}
+  <div> 
+  <br><br>
+  {{#if currentUser}}
+      {{> add}} {{/if}}<br><br>
+   
+  {{#if currentUser }}
     Upload Profile Picture here!
-    {{> drop}}
-
-    <br> <br><br>      
+      {{> drop}}
+  {{else}}
+  {{/if}}
+    <br> <br><br> 
+    
+    {{#if currentUser}} 
         {{#each details}}
-        {{> show}}
-    {{/each}}
+          {{> show}}
+        {{/each}}
+    {{/if}}
     <br>
    </div>
 
    <div>
-    <strong>This is image view:</strong>
-
-    {{#each images}}
-    {{> imageviewer}}
-    {{/each}}
+      {{#if currentUser}} 
+        This is image view:    
+        {{#each images}}
+          {{> imageviewer}}
+        {{/each}}
+    {{/if}}
    </div>
   </body>
 

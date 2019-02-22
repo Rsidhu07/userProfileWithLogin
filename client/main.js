@@ -101,44 +101,39 @@ Template.drop.events({
 
     event.preventDefault();
     var files = event.target.files.files;
-    console.log(files);
+    console.log(files.length);
 
-    // Meteor.call('image.insert', files);
-    
-    for (var i = 0, ln = files.length; i < ln; i++) {
+    for (var i = 0, ln = files.length; i < ln; i++){ 
+
       
       Images.insert(files[i], function (err, fileObj) {
-        // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
-      });
-    }
-    
-  }
+         // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
+       });
+     }
+
+    // Meteor.call('image.insert', files);
+   // FS.Utility.eachFile(event, function(file)
+        
+  },
 });
 
 Template.show.events({ 
 
-'click .delete' : function(event){
+  'click .delete' : function(event){
 
 
 
-  var promp = window.prompt("Are you sure you want to delete the selected record?, please type Yes/NO", "Yes", "No");
+    var promp = window.confirm("Are you sure you want to delete the selected record?");
 
-    if(promp=="Yes"){
+        if(promp){
 
-      Meteor.call('details.delete', this);
-    
-    }
+          Meteor.call('details.delete', this);
+          alert("Select record is Deleted");
+        }   
+          else{
+            alert("Delete operation cancelled");
+          }
 
-    else if(promp=="No"){
-      alert("Delete operation cancelled");
-    }
-    
-    else{
-      alert("Try again with Yes or No only");
-    }
-
-}
-
-
+  }
 
 });
