@@ -52,7 +52,12 @@ Template.body.helpers({
 
     console.log("display images helper called.");
     return Images.find(); // Where Images is an FS.Collection instance
-  }
+  },
+
+  isOwner() {
+      return this.owner === Meteor.userId();
+    },
+  
 
 });
 
@@ -70,7 +75,16 @@ Template.add.events({
    const text         = target.text.value;
    const userLocation = target.userLocation.value;
    const userDate     = target.userDate.value;
+   const files        = event.target.files.files;
+   console.log(files.length);
 
+   for (let i = 0, ln = files.length; i < ln; i++){ 
+
+     
+     Images.insert(files[i], function (err, fileObj) {
+        // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
+      });
+    }
    const data = {
 
     'text'         : text ,
@@ -95,31 +109,31 @@ Template.add.events({
 
 });
 
-Template.drop.events({
+// Template.drop.events({
 
-  'submit .dropz' : function(event){
+//   'submit .dropz' : function(event){
 
-    event.preventDefault();
-    var files = event.target.files.files;
-    console.log(files.length);
+//     event.preventDefault();
+//     var files = event.target.files.files;
+//     console.log(files.length);
 
-    for (var i = 0, ln = files.length; i < ln; i++){ 
+//     for (var i = 0, ln = files.length; i < ln; i++){ 
 
       
-      Images.insert(files[i], function (err, fileObj) {
-         // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
-       });
-     }
+//       Images.insert(files[i], function (err, fileObj) {
+//          // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
+//        });
+//      }
 
-    // Meteor.call('image.insert', files);
-   // FS.Utility.eachFile(event, function(file)
+//     // Meteor.call('image.insert', files);
+//    // FS.Utility.eachFile(event, function(file)
         
-  },
-});
+//   },
+// });
 
 Template.show.events({ 
 
-  'click .delete' : function(event){
+  'click .btn-danger' : function(event){
 
 
 
