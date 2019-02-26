@@ -1,44 +1,24 @@
 import { Meteor } from "meteor/meteor";
 import { Accounts } from "meteor/accounts-base";
 import { Template } from 'meteor/templating';
-import { Details } from "../lib/collections.js";
-import  Dropzone  from 'dropzone';
-import { Images } from "../lib/collections.js";
-// import { Dropzone } from "../lib/dropzone/dropzone.js";
-
-
-
-// import { ReactiveVar } from 'meteor/reactive-var';
-
+import { Details } from "../imports/collections.js";
+import { Images } from "../imports/collections.js";
+import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import './main.html';
 
-// Images = new FS.Collection("images", {
-//   stores: [new FS.Store.FileSystem("images", {path: "~/uploads"})]
-// });
 
-// Images.allow({
-//   'insert': function () {
-//     // add custom authentication code here
-//     return true;
-//   }
-// });
 
 Accounts.ui.config({
 
   passwordSignupFields:'USERNAME_ONLY'
 
 });
-// window.onload = function() {
 
-//   const drop = new Dropzone();
-//   console.log(drop);
-//   // access Dropzone here
-// };
 
 
 // Dropzone.autoDiscover = true;
 
-Template.body.helpers({
+Template.home.helpers({
 
   details(){
 
@@ -109,27 +89,6 @@ Template.add.events({
 
 });
 
-// Template.drop.events({
-
-//   'submit .dropz' : function(event){
-
-//     event.preventDefault();
-//     var files = event.target.files.files;
-//     console.log(files.length);
-
-//     for (var i = 0, ln = files.length; i < ln; i++){ 
-
-      
-//       Images.insert(files[i], function (err, fileObj) {
-//          // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
-//        });
-//      }
-
-//     // Meteor.call('image.insert', files);
-//    // FS.Utility.eachFile(event, function(file)
-        
-//   },
-// });
 
 Template.show.events({ 
 
@@ -148,6 +107,16 @@ Template.show.events({
             alert("Delete operation cancelled");
           }
 
+  },
+
+  'click .btn-warning' : function(event, template){ 
+
+    console.log("Event is :",event, "Template is : ", template);
+    FlowRouter.go('/update');
+    console.log("Event is :",event, "Template is : ", template);
+
   }
 
 });
+
+

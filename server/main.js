@@ -1,3 +1,3 @@
-import '../lib/collections.js';
+import '../imports/collections.js';
 
 
