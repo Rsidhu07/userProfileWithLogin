@@ -1,10 +1,11 @@
 <template name = "updateinfo">
    <div class="container-fluid">
        {{> loginButtons}}<br><br>
-        <form class = " update-details form-group">
-                <div class="form-group row">Username is : <input type="text" ></div>
-                <div class="form-group row"> User Location is : <input type="text" ></div>
-                <div class="form-group row">User Date of Birth is: <input type="text" ></div>
+       <h3>Please click on the link to visit home: <a href="/" class="button">Home</a></h3>
+        <form class = "update-details form-group">
+                <div class="form-group row">Username is : <input type="text" name="text" ></div>
+                <div class="form-group row"> User Location is : <input type="text" name="userLocation" ></div>
+                <div class="form-group row">User Date of Birth is: <input type="text" name="userDate" ></div>
                 <div class="form-group row"><button class="btn-success" type="submit">Submit</button></div>
             </form>
     </div>

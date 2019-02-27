@@ -5,7 +5,7 @@ import { Details } from "../imports/collections.js";
 import { Images } from "../imports/collections.js";
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 import './main.html';
-
+import './updateUser.js'
 
 
 Accounts.ui.config({
@@ -89,6 +89,14 @@ Template.add.events({
 
 });
 
+// Template.show.helpers({
+
+//   result: function() { 
+//     return Session.get('result');
+//   }
+
+// })
+
 
 Template.show.events({ 
 
@@ -99,7 +107,7 @@ Template.show.events({
     var promp = window.confirm("Are you sure you want to delete the selected record?");
 
         if(promp){
-
+          console.log("MEteor delete event on show is called", event);
           Meteor.call('details.delete', this);
           alert("Select record is Deleted");
         }   
@@ -109,12 +117,14 @@ Template.show.events({
 
   },
 
-  'click .btn-warning' : function(event, template){ 
+  'click .btn-warning' : function(event,template){ 
 
-    console.log("Event is :",event, "Template is : ", template);
-    FlowRouter.go('/update');
-    console.log("Event is :",event, "Template is : ", template);
+    const result= template.data._id;
 
+    Session.set('result', result);
+
+    FlowRouter.go('/update/'+result); 
+    
   }
 
 });

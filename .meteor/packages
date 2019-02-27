@@ -26,7 +26,8 @@ cfs:standard-packages
 cfs:filesystem
 cfs:gridfs
 cfs:s3
-twbs:bootstrap
 bootstrap
 kadira:blaze-layout
 ostrio:flow-router-extra
+twbs:bootstrap@3.3.5
+session
