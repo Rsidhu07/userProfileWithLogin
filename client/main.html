@@ -53,8 +53,8 @@
 <template name = "add">
   <h3>Update your Profile details here : </h3>
     <form class="add-details form-group">
-      <div class="form-group row">Enter User Name     : <input type="text" name="text" placeholder="Enter your Name here" maxlength="30" pattern="[A-Za-z]" title="Use letters only from A-Z!" required></div>
-      <div class="form-group row">Enter User Location: <input type="text" name="userLocation" placeholder="Enter your location here" maxlength="20" pattern="[A-Za-z]" title="Use letters only from A-Z!" required></div>
+      <div class="form-group row">Enter User Name     : <input type="text" name="text" placeholder="Enter your Name here" maxlength="30" pattern="[a-zA-Z]+" title="Use letters only from A-Z!" required></div>
+      <div class="form-group row">Enter User Location: <input type="text" name="userLocation" placeholder="Enter your location here" maxlength="20" pattern="[a-zA-Z]+" title="Use letters only from A-Z!" required></div>
       <div class="form-group row">Enter Date of Birth  : <input type="date" min="1950-01-01" max="2005-01-01" name="userDate" placeholder="Enter your date of birth here" maxlength="20" title="Use numbers only!" required></div>
       <div class="form-group row"><h3>Upload Profile Image here :</h3><input id="inp" type="file" name="files"></div>
       <div class="form-group row"><button type="submit">Submit</button></div> 
