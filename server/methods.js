@@ -8,18 +8,19 @@ const myMethodObjArgSchema = new SimpleSchema({ 'text': String, 'userLocation': 
   
 Meteor.methods({
 
-  'update-detail'(){
+  'update-detail'(data){
 
 
-    const appId = FlowRouter.getParam('_Id');
-    console.log("get param working", appId);
     
-//     Details.update( result,  {
-//       $set: { text         : data.text,
-//               userLocation : data.userLocation,
-//               userDate     : data.userDate
-//       },
-//     });
+    
+    Details.update( data.getid,  {
+      $set: { text         : data.text,
+              userLocation : data.userLocation,
+              userDate     : data.userDate
+      },
+    });
+
+    
 },
   
     'details.insert'(data){

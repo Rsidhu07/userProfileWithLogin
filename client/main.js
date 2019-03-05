@@ -121,8 +121,6 @@ Template.show.events({
 
     const result= template.data._id;
 
-    Session.set('result', result);
-
     FlowRouter.go('/update/'+result); 
     
   }

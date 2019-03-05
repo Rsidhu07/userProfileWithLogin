@@ -1,5 +1,6 @@
 import { Meteor } from "meteor/meteor";
 import { Template } from 'meteor/templating';
+import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
 
 import './updateUser.html';
 
@@ -9,6 +10,9 @@ Template.updateinfo.events({
         event.preventDefault();
 
         
+        var getid = FlowRouter.getParam('_id');
+        console.log("parameter is :", getid);
+
         const target       = event.target;
         const text         = target.text.value;
         const userLocation = target.userLocation.value;
@@ -18,7 +22,8 @@ Template.updateinfo.events({
 
               'text'          : text,
               'userLocation'  : userLocation,
-              'userDate'      : userDate
+              'userDate'      : userDate,
+              'getid'         : getid
         }
         
         console.log("update user event is :", data);
@@ -28,6 +33,8 @@ Template.updateinfo.events({
 
 
         Meteor.call('update-detail', data);
+
+        FlowRouter.go('/');
     },
     
     });
