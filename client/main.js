@@ -4,6 +4,7 @@ import { Template } from 'meteor/templating';
 import { Details } from "../imports/collections.js";
 import { Images } from "../imports/collections.js";
 import { FlowRouter } from 'meteor/ostrio:flow-router-extra';
+import { HTTP } from 'meteor/http';
 import './main.html';
 import './updateUser.js'
 
@@ -13,8 +14,6 @@ Accounts.ui.config({
   passwordSignupFields:'USERNAME_ONLY'
 
 });
-
-
 
 // Dropzone.autoDiscover = true;
 
@@ -81,6 +80,8 @@ Template.add.events({
 
     Meteor.call('details.insert',data);
 
+
+    Meteor.call('checkImageCat');
 
     target.text.value = "";
     target.userDate.value = "";

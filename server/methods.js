@@ -54,10 +54,8 @@ Meteor.methods({
       },
     
         'details.delete'(show){
-    
-    
+      
          
-
         if(show.owner!==Meteor.userId()){
     
           alert("You are not authorized to delete others Note!");
@@ -73,7 +71,14 @@ Meteor.methods({
     
       },
 
+      'checkImageCat'() {
 
+        this.unblock();
+    
+        const result = HTTP.call('GET', 'https://api.thecatapi.com/v1/images/search');
+          console.log("result is ************", result[0]);
+
+      }
 
        
     
